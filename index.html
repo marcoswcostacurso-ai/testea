@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Modular Responsivo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ===== CORES PRINCIPAIS DO SITE - ALTERE AQUI! ===== */
+        :root {
+            --primary-color: #2e3032;    /* COR PRINCIPAL (cabeçalho, títulos) */
+            --secondary-color: #f95d04;  /* COR SECUNDÁRIA (botões principais) */
+            --accent-color: #f95d04;     /* COR DE DESTAQUE (botões especiais) */
+            --light-color: #ecf0f1;      /* COR DE FUNDO CLARA */
+            --dark-color: #2c3e50;       /* COR ESCURA */
+            --text-color: #333;          /* COR DO TEXTO */
+            --text-light: #fff;          /* COR DO TEXTO CLARO */
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-color);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* ===== ESTILOS DOS BOTÕES - ALTERE AQUI! ===== */
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--secondary-color); /* COR DE FUNDO DO BOTÃO */
+            color: var(--text-light);                 /* COR DO TEXTO DO BOTÃO */
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .btn:hover {
+            background-color: #3a3b3c;   /* COR DO BOTÃO AO PASSAR O MOUSE */
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+        
+        .btn-accent {
+            background-color: var(--accent-color); /* COR DOS BOTÕES DE DESTAQUE */
+        }
+        
+        .btn-accent:hover {
+            background-color: #3a3b3c;   /* COR DO BOTÃO DE DESTAQUE AO PASSAR O MOUSE */
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--secondary-color); /* COR DA BORDA */
+            color: var(--secondary-color);            /* COR DO TEXTO */
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--secondary-color);
+            color: var(--text-light);
+        }
+        
+        /* ===== BOTÃO APENAS TEXTO (SEM FUNDO, SEM BORDA) ===== */
+        /* PARA USAR: adicione class="btn-text-only" no botão */
+        .btn-text-only {
+            background-color: transparent !important;
+            border: none !important;
+            color: var(--secondary-color) !important; /* COR DO TEXTO */
+            padding: 8px 0 !important;
+            text-decoration: underline;
+            font-weight: 600;
+        }
+        
+        .btn-text-only:hover {
+            background-color: transparent !important;
+            color: #3a3b3c !important;   /* COR DO TEXTO AO PASSAR O MOUSE */
+            transform: none !important;
+            box-shadow: none !important;
+            text-decoration: underline;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+        }
+        
+      /* ===== CABEÇALHO SUPER SIMPLES ===== */
+header {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    padding: 15px 0;
+    position: static;
+    top: 0;
+    z-index: 1000;
+    box-shadow: var(--shadow);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* ===== LOGO E WHATSAPP LADO A LADO ===== */
+.header-main {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+    justify-content: space-between; /* 🔥 Distribui espaço entre logo e WhatsApp */
+}
+
+/* ===== LOGO ===== */
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo-img {
+    height: 70px; /* 🔥 Tamanho da logo */
+    width: auto;
+    transition: var(--transition);
+}
+
+.logo-img:hover {
+    transform: scale(1.05); /* 🔥 Efeito hover na logo */
+}
+
+/* ===== BOTÃO WHATSAPP ===== */
+.btn-whatsapp-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background-color: var(--secondary-color); /* Verde WhatsApp */
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    font-size: 14px;
+    border: 2px solid var(--light-color);
+    white-space: nowrap;
+}
+
+.btn-whatsapp-header:hover {
+    background-color: transparent;
+    color: #25D366;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+}
+
+.btn-whatsapp-header i {
+    font-size: 18px;
+}
+
+/* ===== RESPONSIVIDADE ===== */
+@media (max-width: 768px) {
+    .header-main {
+        gap: 15px;
+    }
+    
+    .logo-img {
+        height: 35px; /* 🔥 Logo menor no mobile */
+    }
+    
+    .btn-whatsapp-header {
+        padding: 8px 16px;
+        font-size: 13px;
+        gap: 5px;
+    }
+    
+    .btn-whatsapp-header i {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* 🔥 No mobile muito pequeno, esconde o texto */
+    .whatsapp-text {
+        display: none;
+    }
+    
+    .btn-whatsapp-header {
+        padding: 10px;
+        border-radius: 50%;
+        width: 44px;
+        height: 44px;
+        justify-content: center;
+    }
+    
+    .header-main {
+        gap: 10px;
+    }
+}
+
+/* ===== REMOVER ELEMENTOS DESNECESSÁRIOS ===== */
+.nav-desktop,
+.nav-mobile,
+.mobile-toggle,
+.mobile-menu {
+    display: none !important; /* 🔥 Esconde tudo que não é necessário */
+}
+        /* ===== SESSÃO 1: IMAGEM E TEXTO ===== */
+        /* PARA MUDAR A COR DE FUNDO: altere o background-color abaixo */
+        .section-1 {
+            background-color: #fff; /* COR DE FUNDO DA SESSÃO 1 */
+        }
+        
+        .content-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        
+        
+        .image-container {
+            flex: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+        
+        .image-container img:hover {
+            transform: scale(1.05);
+        }
+        
+        .text-container {
+            flex: 1;
+        }
+        
+        .text-container h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        .text-container p {
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .button-group {
+            display: flex;
+            flex-direction: row;
+            gap: 15px;
+        }
+        
+            .content-wrapper-b {
+        display: flex;
+        align-items: center;
+        gap: 50px;
+        
+}
+        
+
+        /* Imagem na DIREITA (texto na esquerda) */
+        .content-wrapper-b {
+            flex-direction: row;
+        }
+
+        /* Imagem na ESQUERDA (padrão - texto na direita) */
+        .content-wrapper-b {
+            flex-direction: row-reverse;
+        }
+
+
+        @media (max-width: 768px) {
+            .content-wrapper {
+                flex-direction: column;
+            }
+            
+            .image-container, .text-container {
+                width: 100%;
+            }
+            
+            .text-container h2 {
+                font-size: 1.8rem;
+            }
+            
+            /* No mobile, a imagem sempre vem primeiro */
+            .content-wrapper .image-container {
+                order: 1;
+            }
+            
+            .content-wrapper .text-container {
+                order: 2;
+            }
+        }
+        
+        /* ===== SESSÃO 2: DUAS IMAGENS ===== */
+        /* PARA MUDAR A COR DE FUNDO: altere o background-color abaixo */
+        .section-2 {
+            background-color: var(--primary-color); /* COR DE FUNDO DA SESSÃO 2 */
+        }
+        
+        .images-container {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .image-card {
+            flex: 1;
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .image-card img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+            transition: var(--transition);
+        }
+        
+        .image-card:hover img {
+            transform: scale(1.05);
+        }
+        
+        .image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+            color: var(--text-light);
+        }
+        
+        .image-overlay h3 {
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+        
+        .image-overlay p {
+            margin-bottom: 15px;
+        }
+        
+        @media (max-width: 768px) {
+            .images-container {
+                flex-direction: column;
+            }
+            
+            .image-card img {
+                height: 300px;
+            }
+        }
+        
+        /* ===== SESSÃO 3: TRÊS IMAGENS ===== */
+        /* PARA MUDAR A COR DE FUNDO: altere o background-color abaixo */
+        .section-3 {
+            background-color: #fff; /* COR DE FUNDO DA SESSÃO 3 */
+        }
+
+            .section-title-ofc{
+                color: var(--text-color);
+                text-align: center;
+                padding: 50px;
+                font-size: 40px;
+            }
+         .section-3-a {
+            background-color:var(--primary-color); /* COR DE FUNDO DA SESSÃO 3 */
+            
+        }
+        .section-title {
+            color:var(--text-light)
+        }
+
+        .cards-container {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .card {
+            flex: 1;
+            background-color: var(--light-color);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-image {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .card:hover .card-image img {
+            transform: scale(1.1);
+        }
+        
+        .card-content {
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .card-content h3 {
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+        
+        .card-content p {
+            margin-bottom: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .cards-container {
+                flex-direction: column;
+            }
+        }
+        
+
+        /* ===== SESSÃO 4: TRÊS IMAGENS LADO A LADO ===== */
+.section-4 {
+    background-color: var(--light-color);
+    padding: 80px 0;
+}
+
+.section-subtitle {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--text-color);
+    margin-bottom: 50px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* GRID DE 3 IMAGENS */
+.three-images-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 🔥 3 colunas iguais */
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+/* ITEM DE IMAGEM */
+.image-item {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.image-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.image-wrapper {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.image-wrapper img {
+    width: 100%;
+    height: 300px; /* 🔥 Altura fixa para padronizar */
+    object-fit: cover; /* 🔥 Mantém proporção e preenche */
+    display: block;
+    transition: var(--transition);
+}
+
+.image-item:hover .image-wrapper img {
+    transform: scale(1.1);
+}
+
+/* OVERLAY NAS IMAGENS */
+.image-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 25px;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    color: var(--text-light);
+    transform: translateY(10px);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.image-item:hover .image-overlay {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.image-overlay h3 {
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+    color: white;
+}
+
+.image-overlay p {
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+    opacity: 0.9;
+}
+
+/* BOTÃO PEQUENO */
+.btn-small {
+    padding: 8px 16px;
+    font-size: 13px;
+    background-color: var(--secondary-color);
+}
+
+.btn-small:hover {
+    background-color: #2980b9;
+}
+
+/* RODAPÉ DA SESSÃO */
+.section-footer {
+    text-align: center;
+    margin-top: 30px;
+}
+
+/* ===== RESPONSIVIDADE ===== */
+@media (max-width: 1024px) {
+    .three-images-grid {
+        grid-template-columns: repeat(2, 1fr); /* 🔥 2 colunas no tablet */
+        gap: 25px;
+    }
+    
+    .image-wrapper img {
+        height: 280px;
+    }
+}
+
+@media (max-width: 768px) {
+    .three-images-grid {
+        grid-template-columns: 1fr; /* 🔥 1 coluna no mobile */
+        gap: 20px;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .image-wrapper img {
+        height: 250px;
+    }
+    
+    .image-overlay {
+        opacity: 1; /* 🔥 Overlay sempre visível no mobile */
+        transform: translateY(0);
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+    }
+    
+    .section-4 {
+        padding: 60px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .three-images-grid {
+        gap: 15px;
+    }
+    
+    .image-wrapper img {
+        height: 220px;
+    }
+    
+    .image-overlay {
+        padding: 20px;
+    }
+    
+    .image-overlay h3 {
+        font-size: 1.2rem;
+    }
+}
+        /* ===== FORMULÁRIO MODAL ===== */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal.active {
+            display: flex;
+        }
+        
+        .modal-content {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: var(--shadow);
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .modal-header h2 {
+            color: var(--primary-color);
+        }
+        
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark-color);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        /* ===== RODAPÉ ===== */
+        footer {
+            background-color: var(--primary-color); /* COR DE FUNDO DO RODAPÉ */
+            color: var(--text-light);
+            padding: 40px 0 20px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        
+        /* ===== LOGO NO RODAPÉ ===== */
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .footer-logo-img {
+            height: 30px; /* ALTURA DA LOGO NO RODAPÉ */
+            width: auto;
+        }
+        
+        .footer-logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-left: 10px;
+        }
+        
+        .footer-logo-text span {
+            color: var(--secondary-color);
+        }
+        
+        .footer-links h3,
+        .footer-contact h3 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links ul li a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .footer-contact p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-contact i {
+            margin-right: 10px;
+            color: var(--secondary-color);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .footer-content {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .footer-logo-img {
+                height: 25px; /* LOGO MENOR NO RODAPÉ NO MOBILE */
+            }
+            
+            .footer-logo-text {
+                font-size: 1.5rem; /* TEXTO MENOR NO RODAPÉ NO MOBILE */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== CABEÇALHO ===== -->
+    <header>
+        <div class="container header-container">
+            <!-- ===== LOGO NO CABEÇALHO ===== -->
+            <!-- ALTERE AQUI SUA LOGO - ESCOLHA UMA DAS OPÇÕES ABAIXO -->
+            
+            <!-- OPÇÃO 1: APENAS IMAGEM (Recomendado)
+            <a href="#" class="logo">
+                <img src="https://i.postimg.cc/76fDF8sc/logoalt.png" alt="Sua Empresa" class="logo-img">
+            </a> -->
+            
+            <!-- OPÇÃO 2: IMAGEM + TEXTO -->
+            <!--
+            <a href="#" class="logo">
+                <img src="https://via.placeholder.com/120x40/3498db/ffffff?text=LOGO" alt="Sua Empresa" class="logo-img">
+                <span class="logo-text">Sua<span>Empresa</span></span>
+            </a>
+            -->
+            
+            <!-- OPÇÃO 3: APENAS TEXTO -->
+            <!--
+            <a href="#" class="logo">
+                <span class="logo-text">Sua<span>Empresa</span></span>
+            </a>
+            -->
+             <div class="container header-container">
+        <div class="header-main">
+            <!-- LOGO -->
+            <a href="#" class="logo">
+                <img src="https://i.postimg.cc/wxRRNSqw/logoalt.png" 
+                     alt="Sua Empresa" 
+                     class="logo-img">
+            </a>
+            
+            <!-- BOTÃO WHATSAPP -->
+            <a href="#" class="btn-whatsapp-header" id="headerWhatsApp">
+                <i class="fab fa-whatsapp"></i>
+                <span class="whatsapp-text">Fale Conosco</span>
+            </a>
+        </div>
+    </div>
+        
+        <!-- SEM MENU MOBILE -->
+    </div>
+    </header>
+
+    <!-- ===== SESSÃO 1: IMAGEM E TEXTO ===== -->
+    <section class="section-1" id="section1">
+        <div class="container">
+            <div class="content-wrapper">
+                <div class="image-container">
+                    <!-- ALTERE A IMAGEM AQUI - substitua o src pela URL da sua imagem -->
+                    <img src="https://i.postimg.cc/4dcqhxjF/Design-sem-nome-2.png" alt="Imagem ilustrativa">
+                </div>
+                <div class="text-container">
+                    <!-- ALTERE O TÍTULO E TEXTO AQUI -->
+                    <h2>Obtenha Assistência para seus Equipamentos com Eficiência Comprovada!</h2>
+                    <p>Somos especialistas nas prestigiadas marcas Fujifilm, Carestream e Agfa. Além disso, dominamos a arte da manutenção de Ultrassons, garantindo resultados impecáveis em todos os exames.</p>
+                    <div class="button-group">
+                        <a href="#" class="btn" id="btnSection1-1">Abra um chamado Agora</a>
+                        <a href="#" class="btn btn-outline" id="btnSection1-2">Tire suas Dúvidas</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+ <!-- ===== SESSÃO 3-a: TRÊS IMAGENS ===== -->
+    <section class="section-3-a" id="section3">
+        <div class="container">
+            <h2 class="section-title">O QUE OFERECEMOS</h2>
+            <div class="cards-container">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1556155092-490a1ba16284?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Serviço 1">
+                    </div>
+                    <div class="card-content">
+                        <h3>Rapidez no Atendimento</h3>
+                        <p>Não fique esperando! Temos acesso rápido à peças e atualizações de software, além de um atendimento voltado para sua satisfação.
+
+.</p>
+                        <a href="#" class="btn-text-only" id="btnSection3-1-a">Fale com um especialsta</a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-image">
+                        <img src="https://i.postimg.cc/L4NwYwW4/Design-sem-nome-4.png" alt="Serviço 2">
+                    </div>
+                    <div class="card-content">
+                        <h3>Experiência e Excelência</h3>
+                        <p>Com mais de 12 anos de experiência no setor, somos especialistas em todos os aspectos relacionados aos equipamentos médicos. </p>
+                        <a href="#" class="btn-text-only" id="btnSection3-2-a">Abra um chamado</a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-image">
+                        <img src="https://i.postimg.cc/QdwrBwHp/Design-sem-nome-3.png" alt="Serviço 3">
+                    </div>
+                    <div class="card-content">
+                        <h3>Atendemos Todo Brasil</h3>
+                        <p>Você é nossa prioridade! Se o técnico local estiver ocupado a gente desloca outro técnico, de outro estado, sem ter custo adicional para você!</p>
+                        <a href="#" class="btn-text-only" id="btnSection3-3-a">Entre em contato</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+      <!-- ===== SESSÃO 1-a: IMAGEM E TEXTO ===== -->
+    <section class="section-1-a" id="section1">
+        <div class="container">
+            <div class="content-wrapper">
+                <div class="image-container">
+                    <!-- ALTERE A IMAGEM AQUI - substitua o src pela URL da sua imagem -->
+                    <img src="https://i.postimg.cc/BQ8pXhyk/Design-sem-nome-5.png" alt="Imagem ilustrativa">
+                </div>
+                <div class="text-container">
+                    <!-- ALTERE O TÍTULO E TEXTO AQUI -->
+                    <h2>Ampla Gama de Serviços!</h2>
+                    <p><strong>Manutenção e Reparo de Equipamentos: </strong>Manutenção e Reparo de Equipamentos: Oferecemos serviços de manutenção e reparo para todos os tipos de equipamentos médicos. <br>
+
+<strong>Aluguel e Venda de Equipamentos: </strong>Aluguel e Venda de Equipamentos: Nossos serviços de aluguel e vendas são acessíveis e flexíveis, garantindo que você obtenha o equipamento de que precisa quando precisar além de ter garantia em todos os equipamentos.</p>
+                    <div class="button-group">
+                        <a href="#" class="btn" id="btnSection1-1-a">Consulte disponibilidade</a>
+                        <a href="#" class="btn btn-outline" id="btnSection1-2-a">Tire suas Dúvidas</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+      <!-- ===== SESSÃO 1-b: IMAGEM E TEXTO ===== -->
+    <section class="section-1-b" id="section1">
+        <div class="container">
+            <div class="content-wrapper-b">
+                <div class="image-container-b">
+                    <!-- ALTERE A IMAGEM AQUI - substitua o src pela URL da sua imagem -->
+                    <img src="https://i.postimg.cc/26NzsXWW/Design-sem-nome-6.png" alt="imagem-pequena">
+                </div>
+                <div class="text-container-b">
+                    <!-- ALTERE O TÍTULO E TEXTO AQUI -->
+                    <h2>Compra Segura</h2>
+                    <p><strong>Você tem uma super garantia de qualquer compra de equipamentos. Seja com nossa empresa ou de terceiros. Você contrata nosso serviço e a Alternativa Assistência garante um equipamento de qualidade! </p>
+                    <div class="button-group">
+                        <!--<a href="#" class="btn" id="btnSection1-1-b">Consulte disponibilidade</a>-->
+                        <a href="#" class="btn-text-only" id="btnSection1-2-b">Saiba Mais</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SESSÃO 2: DUAS IMAGENS ===== -->
+    <section class="section-2" id="section2">
+        <div class="container">
+             <!--<h2 class="section-title">Sessão 2 - Duas Imagens</h2>-->
+            <div class="images-container">
+                <div class="image-card">
+                    <img src="https://i.postimg.cc/KztmkLKC/Inserir-um-subt-tulo-1.png" alt="Imagem 1">
+                    <!-- <div class="image-overlay">
+                        <h3>Título da Imagem 1</h3>
+                        <p>Descrição breve da imagem 1</p>
+                        <a href="#" class="btn btn-accent" id="btnSection2-1">Saiba Mais</a>
+                    </div>-->
+                </div>
+                
+                <div class="image-card">
+                    <img src="https://i.postimg.cc/dtVDXHZK/Inserir-um-subt-tulo-3.png" alt="Imagem 2">
+                    <!--<div class="image-overlay">
+                        <h3>Título da Imagem 2</h3>
+                        <p>Descrição breve da imagem 2</p>
+                        <a href="#" class="btn btn-accent" id="btnSection2-2">Saiba Mais</a>
+                    </div>-->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SESSÃO 3: TRÊS IMAGENS ===== -->
+    <section class="section-3" id="section3">
+        <div class="container">
+            <h2 class="section-title-ofc">Benefícios</h2>
+            <div class="cards-container">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="https://i.postimg.cc/kXwRgVtc/Inserir-um-subt-tulo-4.png" alt="Serviço 1">
+                    </div>
+                    <div class="card-content">
+                        <h3>Especialização</h3>
+                        <p>Nossa equipe de especialistas é altamente qualificada e experiente no manuseio de todos os tipos de equipamentos médicos. Garantimos que todos os nossos serviços são da mais alta qualidade.</p>
+                           <!--<a href="#" class="btn" id="btnSection3-1">Solicitar</a>-->
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-image">
+                        <img src="https://i.postimg.cc/Xq4XV3Nv/Inserir-um-subt-tulo-6.png" alt="Serviço 2">
+                    </div>
+                    <div class="card-content">
+                        <h3>Acessibilidade</h3>
+                        <p>Entendemos que os equipamentos médicos podem ser caros. É por isso que oferecemos serviços acessíveis que são adaptados para atender às suas necessidades e orçamento.</p>
+                           <!--<a href="#" class="btn" id="btnSection3-2">Solicitar</a>-->
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-image">
+                        <img src="https://i.postimg.cc/vmnmfDcB/Inserir-um-subt-tulo-5.png" alt="Serviço 3">
+                    </div>
+                    <div class="card-content">
+                        <h3>Flexibilidade</h3>
+                        <p>Oferecemos serviços flexíveis que são adaptados para atender às suas necessidades específicas. Se você precisa de serviços de manutenção, reparo ou aluguel, nós temos tudo o que você precisa.</p>
+                           <!--<a href="#" class="btn" id="btnSection3-3">Solicitar</a>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SESSÃO 1-b: IMAGEM E TEXTO ===== -->
+    <section class="section-1-b" id="section1">
+        <div class="container">
+            <div class="content-wrapper-b">
+                <div class="image-container-b">
+                    <!-- ALTERE A IMAGEM AQUI - substitua o src pela URL da sua imagem -->
+                    <img src="https://i.postimg.cc/cHMkKMWh/Inserir-um-subt-tulo-7.png" alt="imagem-pequena">
+                </div>
+                <div class="text-container-b">
+                    <!-- ALTERE O TÍTULO E TEXTO AQUI -->
+                    <h2>Confiabilidade</h2>
+                    <p>Somos uma empresa confiável e que está comprometida em fornecer os melhores serviços aos nossos clientes. Garantimos que todos os nossos serviços são entregues no prazo e com os mais altos padrões. </p>
+                    <div class="button-group">
+                        <!--<a href="#" class="btn" id="btnSection1-1-b">Consulte disponibilidade</a>-->
+                        <a href="#" class="btn-text-only" id="btnSection1-2-b">Saiba Mais</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SESSÃO 4: TRÊS IMAGENS LADO A LADO ===== -->
+<section class="section-4" id="section4">
+    <div class="container">
+      <!--<h2 class="section-title">Depoimentos</h2>
+        <p class="section-subtitle">Não tome apenas a nossa palavra para isso. Aqui está o que alguns de nossos clientes satisfeitos têm a dizer sobre nossos serviços</p>-->
+        
+        <div class="three-images-grid">
+            <!-- IMAGEM 1 -->
+            <div class="image-item">
+                <div class="image-wrapper">
+                    <img src="https://i.postimg.cc/ThMn6ByQ/Inserir-um-subt-tulo-9.png" alt="Projeto 1">
+                    <div class="image-overlay">
+                         <!--<h3>Projeto 1</h3>
+                        <p>Descrição breve do projeto</p>
+                        <a href="#" class="btn btn-small" id="btnSection4-1">Ver Detalhes</a>-->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- IMAGEM 2 -->
+            <div class="image-item">
+                <div class="image-wrapper">
+                    <img src="https://i.postimg.cc/k4GH6RTp/Inserir-um-subt-tulo-10.png" alt="Projeto 2">
+                    <div class="image-overlay">
+                         <!--<h3>Projeto 2</h3>
+                        <p>Descrição breve do projeto</p>
+                        <a href="#" class="btn btn-small" id="btnSection4-2">Ver Detalhes</a>-->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- IMAGEM 3 -->
+            <div class="image-item">
+                <div class="image-wrapper">
+                    <img src="https://i.postimg.cc/ncqncNj7/Inserir-um-subt-tulo-11.png" alt="Projeto 3">
+                    <div class="image-overlay">
+                         <!--<h3>Projeto 3</h3>
+                        <p>Descrição breve do projeto</p>
+                        <a href="#" class="btn btn-small" id="btnSection4-3">Ver Detalhes</a>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- BOTÃO VER MAIS (OPCIONAL) 
+        <div class="section-footer">
+            <a href="#" class="btn btn-outline" id="btnSection4-vermais">Ver Todos os Projetos</a>
+        </div>
+    </div>-->
+</section>
+    <!-- ===== FORMULÁRIO MODAL ===== -->
+    <div class="modal" id="contactModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Entre em Contato</h2>
+                <button class="close-modal" id="closeModal">&times;</button>
+            </div>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">Nome do Solicitante</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="contact">Contato (Telefone/Email)</label>
+                    <input type="text" id="contact" name="contact" required>
+                </div>
+                <div class="form-group">
+                    <label for="equipment">Equipamento</label>
+                    <input type="text" id="equipment" name="equipment" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Mensagem Adicional</label>
+                    <textarea id="message" name="message"></textarea>
+                </div>
+                <button type="submit" class="btn">Enviar para WhatsApp</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ===== RODAPÉ ===== -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <!-- ===== LOGO NO RODAPÉ ===== -->
+                    <!-- ALTERE AQUI SUA LOGO - USE A MESMA OPÇÃO DO CABEÇALHO -->
+                    
+                    <!-- OPÇÃO 1: APENAS IMAGEM (Recomendado) -->
+                    <div class="footer-logo">
+                        <img src="https://via.placeholder.com/120x30/3498db/ffffff?text=SUA-LOGO" alt="Sua Empresa" class="footer-logo-img">
+                    </div>
+                    
+                    <!-- OPÇÃO 2: IMAGEM + TEXTO -->
+                    <!--
+                    <div class="footer-logo">
+                        <img src="https://via.placeholder.com/100x25/3498db/ffffff?text=LOGO" alt="Sua Empresa" class="footer-logo-img">
+                        <span class="footer-logo-text">Sua<span>Empresa</span></span>
+                    </div>
+                    -->
+                    
+                    <!-- OPÇÃO 3: APENAS TEXTO -->
+                    <!--
+                    <div class="footer-logo">
+                        <span class="footer-logo-text">Sua<span>Empresa</span></span>
+                    </div>
+                    -->
+                    
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="#home">Início</a></li>
+                        <li><a href="#section1">Sessão 1</a></li>
+                        <li><a href="#section2">Sessão 2</a></li>
+                        <li><a href="#section3">Sessão 3</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contato</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Endereço da Empresa</p>
+                    <p><i class="fas fa-phone"></i> (11) 99999-9999</p>
+                    <p><i class="fas fa-envelope"></i> contato@empresa.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Site Modular. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ===== CONFIGURAÇÃO FÁCIL DOS BOTÕES =====
+        // ALTERE AQUI O COMPORTAMENTO DE CADA BOTÃO!
+        
+        const buttonConfig = {
+            // "ID_DO_BOTÃO": "comportamento"
+            // COMPORTAMENTOS DISPONÍVEIS:
+            // - "formulario" → Abre o formulário primeiro
+            // - "whatsapp" → Vai direto para o WhatsApp
+            
+            // SESSÃO 1
+            "btnSection1-1": "formulario",
+            "btnSection1-2": "formulario",
+            
+            // SESSÃO 3
+            "btnSection3-1-a": "whatsapp",
+            "btnSection3-2-a": "formulario",
+            "btnSection3-3-a": "whatsapp",
+
+
+          // SESSÃO 1a
+            "btnSection1-1-a": "whatsapp",
+            "btnSection1-2-a": "whatsapp",
+        // SESSÃO 1a
+           
+            "btnSection1-2-b": "whatsapp",
+            // SESSÃO 2  
+            "btnSection2-1": "whatsapp",
+            "btnSection2-2": "formulario",
+            
+            // SESSÃO 3
+            "btnSection3-1": "whatsapp",
+            "btnSection3-2": "formulario",
+            "btnSection3-3": "whatsapp",
+
+            "headerWhatsApp":"whatsapp"
+        };
+        
+        // ===== NÚMERO DO WHATSAPP =====
+        // ALTERE PARA SEU NÚMERO (com DDD, sem parênteses ou traços)
+        const whatsappNumber = "5585989408154";
+        
+        // ===== FUNÇÕES (NÃO PRECISA ALTERAR) =====
+        const contactModal = document.getElementById('contactModal');
+        const closeModal = document.getElementById('closeModal');
+        const contactForm = document.getElementById('contactForm');
+        
+        function openModal() {
+            contactModal.classList.add('active');
+        }
+        
+        function closeModalFunc() {
+            contactModal.classList.remove('active');
+        }
+        
+        function goToWhatsApp(mensagemPersonalizada = "") {
+            let mensagem = mensagemPersonalizada || "Olá, gostaria de mais informações!";
+            window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(mensagem)}`, '_blank');
+        }
+        
+        // ===== CONFIGURAÇÃO AUTOMÁTICA DOS BOTÕES =====
+        Object.keys(buttonConfig).forEach(buttonId => {
+            const button = document.getElementById(buttonId);
+            if (button) {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    
+                    if (buttonConfig[buttonId] === "formulario") {
+                        openModal();
+                    } else if (buttonConfig[buttonId] === "whatsapp") {
+                        let mensagem = "Olá, gostaria de mais informações!";
+                        
+                        if (buttonId === "btnSection3-1") {
+                            mensagem = "Olá, gostaria de solicitar o Serviço 1!";
+                        } else if (buttonId === "btnSection3-3") {
+                            mensagem = "Olá, gostaria de solicitar o Serviço 3!";
+                        }
+                        
+                        goToWhatsApp(mensagem);
+                    }
+                });
+            }
+        });
+        
+        // ===== FORMULÁRIO =====
+        closeModal.addEventListener('click', closeModalFunc);
+        
+        contactModal.addEventListener('click', (e) => {
+            if (e.target === contactModal) {
+                closeModalFunc();
+            }
+        });
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const contact = document.getElementById('contact').value;
+            const equipment = document.getElementById('equipment').value;
+            const message = document.getElementById('message').value;
+            
+            const whatsappMessage = `Olá, gostaria de solicitar um serviço:%0A%0A` +
+                                   `*Nome:* ${name}%0A` +
+                                   `*Contato:* ${contact}%0A` +
+                                   `*Equipamento:* ${equipment}%0A` +
+                                   `*Mensagem:* ${message}`;
+            
+            window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, '_blank');
+            closeModalFunc();
+            contactForm.reset();
+        });
+        
+        // ===== MENU MOBILE =====
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+        });
+        
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
