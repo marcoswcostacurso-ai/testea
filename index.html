@@ -299,6 +299,15 @@ header {
             flex-direction: row-reverse;
         }
 
+        /* Imagem na DIREITA (texto na esquerda) */
+        .content-wrapper-c {
+            flex-direction: row;
+        }
+
+        /* Imagem na ESQUERDA (padrão - texto na direita) */
+        .content-wrapper-c {
+            flex-direction: row-reverse;
+        }
 
         @media (max-width: 768px) {
             .content-wrapper {
@@ -322,6 +331,111 @@ header {
                 order: 2;
             }
         }
+/* ===== SESSÃO 1-c: IMAGEM NA DIREITA NO DESKTOP ===== */
+.section-1-c {
+    background-color: #fff;
+    padding: 80px 0;
+}
+
+.content-wrapper-c {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    flex-direction: row-reverse; /* 🔥 IMAGEM NA DIREITA */
+}
+
+.image-container-c {
+    flex: 0 0 30%;
+    max-width: 300px;
+}
+
+.image-container-c img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.image-container-c img:hover {
+    transform: scale(1.05);
+}
+
+.text-container-c {
+    flex: 1;
+}
+
+.text-container-c h2 {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+.text-container-c p {
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+/* ===== MOBILE: IMAGEM PRIMEIRO ===== */
+@media (max-width: 768px) {
+    .content-wrapper-c {
+        flex-direction: column; /* 🔥 VOLTA PARA COLUNA */
+        gap: 30px;
+    }
+    
+    .image-container-c {
+        order: 1;
+        flex: 0 0 100%;
+        max-width: 100%;
+        text-align: center;
+    }
+    
+    .text-container-c {
+        order: 2;
+        flex: 0 0 100%;
+        text-align: center;
+    }
+    
+    .image-container-c img {
+        max-width: 250px;
+        margin: 0 auto;
+    }
+}
+        /* ===== MOBILE OBRIGATÓRIO ===== */
+@media (max-width: 768px) {
+    .content-wrapper-b {
+        flex-direction: column; /* Muda layout para coluna */
+        gap: 30px;
+    }
+    
+    /* 🔥 FORÇA ORDEM NO MOBILE */
+    .image-container-b {
+        order: 1 !important; /* IMAGEM SEMPRE PRIMEIRO */
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+        text-align: center;
+    }
+    
+    .text-container-b {
+        order: 2 !important; /* TEXTO SEMPRE DEPOIS */
+        flex: 0 0 100% !important;
+        text-align: center;
+    }
+    
+    .image-container-b img {
+        max-width: 250px; /* Controla tamanho no mobile */
+        margin: 0 auto; /* Centraliza */
+    }
+}
+
+/* Mobile pequeno */
+@media (max-width: 480px) {
+    .image-container-b img {
+        max-width: 200px;
+    }
+}
         
         /* ===== SESSÃO 2: DUAS IMAGENS ===== */
         /* PARA MUDAR A COR DE FUNDO: altere o background-color abaixo */
@@ -1002,21 +1116,21 @@ header {
         </div>
     </section>
 
-    <!-- ===== SESSÃO 1-b: IMAGEM E TEXTO ===== -->
-    <section class="section-1-b" id="section1">
+    <!-- ===== SESSÃO 1-c: IMAGEM E TEXTO ===== -->
+    <section class="section-1-c" id="section1">
         <div class="container">
-            <div class="content-wrapper-b">
-                <div class="image-container-b">
+            <div class="content-wrapper-c">
+                <div class="image-container-c">
                     <!-- ALTERE A IMAGEM AQUI - substitua o src pela URL da sua imagem -->
                     <img src="https://i.postimg.cc/cHMkKMWh/Inserir-um-subt-tulo-7.png" alt="imagem-pequena">
                 </div>
-                <div class="text-container-b">
+                <div class="text-container-c">
                     <!-- ALTERE O TÍTULO E TEXTO AQUI -->
                     <h2>Confiabilidade</h2>
                     <p>Somos uma empresa confiável e que está comprometida em fornecer os melhores serviços aos nossos clientes. Garantimos que todos os nossos serviços são entregues no prazo e com os mais altos padrões. </p>
                     <div class="button-group">
                         <!--<a href="#" class="btn" id="btnSection1-1-b">Consulte disponibilidade</a>-->
-                        <a href="#" class="btn-text-only" id="btnSection1-2-b">Saiba Mais</a>
+                        <a href="#" class="btn-text-only" id="btnSection1-2-c">Saiba Mais</a>
                     </div>
                 </div>
             </div>
